@@ -37,6 +37,8 @@
         "client/components/navbar/navbar.directive.ts",
         "client/components/oauth-buttons/oauth-buttons.controller.ts",
         "client/components/oauth-buttons/oauth-buttons.directive.ts",
+        "client/components/sensor/sensor.module.ts",
+        "client/components/sensor/sensor.service.ts",
         "client/components/sidemenu/sidemenu.controller.ts",
         "client/components/sidemenu/sidemenu.directive.ts",
         "client/components/socket/socket.mock.ts",
