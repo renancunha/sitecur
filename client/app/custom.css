@@ -169,6 +169,8 @@ body.nav-md .container.body .col-md-3.left_col {
   padding: 0;
   position: fixed;
   display: flex;
+}
+body .container.body .col-md-3.left_col {
   height: 100%;
   background-color: #2A3F54;
 }

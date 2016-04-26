@@ -17,6 +17,8 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/sensor_data/sensor_data.socket').register(socket);
+  require('../api/teste/teste.socket').register(socket);
   require('../api/sensor/sensor.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 

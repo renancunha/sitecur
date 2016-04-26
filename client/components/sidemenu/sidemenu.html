@@ -9,7 +9,7 @@
     <!-- menu prile quick info -->
     <div class="profile">
       <div class="profile_pic">
-        <img src="/assets/images/img.jpg" alt="..." class="img-circle profile_img">
+        <img src="/assets/images/users-1-128.png" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Bem vindo,</span>
@@ -29,10 +29,10 @@
           <li class=" "><a ui-sref="main"><i class="fa fa-home"></i> Principal </span></a></li>
           <li><a><i class="fa fa-edit"></i> Administração <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: none">
-              <li>
+              <li ng-show="nav.isAdmin()">
                 <a ui-sref="user">Usuarios</a>
               </li>
-              <li>
+              <li ng-show="nav.isAdmin()">
                 <a ui-sref="sensor">Sensores</a>
               </li>
             </ul>
