@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
-    <title>Site XXXXXXX</title>
+    <title>Projeto Ara-Curitibanos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,6 +16,8 @@
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
       <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+      <link rel="stylesheet" href="bower_components/chosen/chosen.css" />
+      <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -26,6 +28,7 @@
       <link rel="stylesheet" href="app/custom.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/sensor/sensor.css">
+      <link rel="stylesheet" href="app/sensor_explorer/sensor_explorer.css">
       <link rel="stylesheet" href="app/user/user.css">
       <link rel="stylesheet" href="components/footer/footer.css">
       <link rel="stylesheet" href="components/modal/modal.css">
@@ -94,6 +97,11 @@
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/chosen/chosen.jquery.js"></script>
+      <script src="bower_components/angular-chosen-localytics/dist/angular-chosen.js"></script>
+      <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+      <script src="bower_components/Chart.js/Chart.js"></script>
+      <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -105,20 +113,22 @@
       <script src="components/sensor/sensor.module.js"></script>
       <script src="components/user/user.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="components/footer/footer.directive.js"></script>
+      <script src="components/auth/user.service.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
       <script src="app/sensor/sensor.controller.js"></script>
       <script src="app/sensor/sensor.js"></script>
+      <script src="app/sensor_explorer/sensor_explorer.controller.js"></script>
+      <script src="app/sensor_explorer/sensor_explorer.js"></script>
       <script src="app/user/user.controller.js"></script>
       <script src="app/user/user.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
-      <script src="components/auth/user.service.js"></script>
       <script src="app/account/login/login.controller.js"></script>
+      <script src="components/footer/footer.directive.js"></script>
       <script src="components/mainview/mainview.controller.js"></script>
       <script src="components/mainview/mainview.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>

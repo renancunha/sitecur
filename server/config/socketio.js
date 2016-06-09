@@ -14,6 +14,7 @@ function onConnect(socket) {
   // When the client emits 'info', this listens and executes
   socket.on('info', data => {
     socket.log(JSON.stringify(data, null, 2));
+    socket.emit('test', 5);
   });
 
   // Insert sockets below

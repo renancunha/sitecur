@@ -4,18 +4,48 @@
  */
 
 'use strict';
+import moment from 'moment';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import Sensor from '../api/sensor/sensor.model'
+import SensorData from '../api/sensor_data/sensor_data.model'
 
 Sensor.find({}).remove()
   .then(() => {
     Sensor.create({
-      name: 'Temperatura - Vaso 1',
-      alias: 'temp_vaso_1'
+      name: 'TempSolo_vaso_1',
+      alias: 'TempSolo_vaso_1'
     }, {
-      name: 'Umidade - Vaso 1',
-      alias: 'umid_vaso_1'
+      name: 'UmSolo_vaso_1',
+      alias: 'UmSolo_vaso_1'
+    }, {
+      name: 'TempAmb_vaso_1',
+      alias: 'TempAmb_vaso_1'
+    }, {
+      name: 'UmiAmb_vaso_1',
+      alias: 'UmiAmb_vaso_1'
+    }, {
+      name: 'Peso_vaso_1',
+      alias: 'Peso_vaso_1'
+    }).then(() => {
+      Sensor.findOne().exec()
+        .then(sensor => {
+
+          SensorData.find({}).remove()
+            .then(() => {
+              var date = moment();
+
+              for (var i = 0; i < 0; i++) {
+                var _date = date.add(10, 'minutes');
+                var sensorData = new SensorData();
+                sensorData.date = _date;
+                sensorData.value = Math.random() * 30;
+                sensorData.sensor = sensor._id;
+
+                sensorData.save();
+              }
+            })
+        });
     })
   });
 
@@ -62,7 +92,7 @@ User.find({}).remove()
       provider: 'local',
       role: 'admin',
       name: 'Admin',
-      email: 'admin@example.com',
+      email: 'admin',
       password: 'admin'
     })
     .then(() => {

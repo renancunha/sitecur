@@ -12,6 +12,22 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+      'client/bower_components/jquery/dist/jquery.js',
+      'client/bower_components/angular/angular.js',
+      'client/bower_components/angular-resource/angular-resource.js',
+      'client/bower_components/angular-cookies/angular-cookies.js',
+      'client/bower_components/angular-sanitize/angular-sanitize.js',
+      'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'client/bower_components/lodash/dist/lodash.compat.js',
+      'client/bower_components/angular-socket-io/socket.js',
+      'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
+      'client/bower_components/chosen/chosen.jquery.js',
+      'client/bower_components/angular-chosen-localytics/dist/angular-chosen.js',
+      'client/bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js',
+      'client/bower_components/Chart.js/Chart.js',
+      'client/bower_components/angular-chart.js/dist/angular-chart.js',
+      'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
       '.tmp/app/app.js',

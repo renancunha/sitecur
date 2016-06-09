@@ -21,6 +21,8 @@
         "client/app/main/main.ts",
         "client/app/sensor/sensor.controller.ts",
         "client/app/sensor/sensor.ts",
+        "client/app/sensor_explorer/sensor_explorer.controller.ts",
+        "client/app/sensor_explorer/sensor_explorer.ts",
         "client/app/user/user.controller.ts",
         "client/app/user/user.ts",
         "client/components/auth/auth.module.ts",

@@ -6,6 +6,7 @@ var controller = require('./sensor_data.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/get_sensor_data/:sensorId', controller.getSensorData);
 router.get('/send', controller.receive);
 router.get('/:id', controller.show);
 router.post('/', controller.create);

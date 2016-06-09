@@ -65,10 +65,14 @@ export function receive(req, res) {
   var date = req.query.data;
 
   if(date) {
-    date = moment(date, 'DD/MM/YYYY HH:mm:ss').toDate();
+    console.log(date);
+    date = moment(date, 'DD/MM/YY HH:mm:ss').toDate();
+    console.log(date);
+    console.log('Pegou data do arduino');
   }
   else {
-    res.status(500).send({msg: 'Date param not found.'})
+    date = moment().toDate();
+    console.log('Pegou data do servidor');
   }
 
   var query = _.omit(req.query, ['data']);
@@ -96,6 +100,16 @@ export function receive(req, res) {
   }
 
   res.status(200).json({success: 1});
+}
+
+// Gets a list of SensorDatas with filters
+export function getSensorData(req, res) {
+  SensorData.find({
+      'sensor': req.query.id,
+      'date': { '$gte': req.query.date_start, '$lte': req.query.date_end}
+  }).exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
 }
 
 // Gets a list of SensorDatas
