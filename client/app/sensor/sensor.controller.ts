@@ -97,6 +97,60 @@ class ManageSensorComponent {
   }
 }
 
+class CalibraSensorComponent {
+  /*var errors: [];
+  var submitted: false;*/
+
+  constructor($http, Auth, $state, $timeout) {
+    this.Auth = Auth;
+    this.$http = $http;
+    this.$state = $state;
+    this.$timeout = $timeout;
+
+    this.iniciado = false;
+    this.calibrado = false;
+    this.aguardando = false;
+
+  }
+
+  inicia() {
+    this.$http.post('/api/sensors/inicia_calibracao')
+    .then(() => {
+      this.iniciado = true;
+      this.aguardando = true;
+      var vm = this;
+      this.$timeout(function () {
+        vm.aguardando = false;
+      }, 5000);
+    })
+    .catch(() => {
+
+    });
+  }
+
+  calibra(form) {
+    this.submitted = true;
+    this.$http.post('/api/sensors/envia_calibracao', {
+      peso: this.peso,
+    })
+    .then(() => {
+      this.calibrado = true;
+    })
+    .catch(err => {
+      err = err.data;
+      this.errors = {};
+
+      // Update validity of form fields that match the mongoose errors
+      angular.forEach(err.errors, (error, field) => {
+        form[field].$setValidity('mongoose', false);
+        this.errors[field] = error.message;
+      });
+
+    });
+  }
+
+}
+
 angular.module('siteCurApp')
   .component('sensor', {
     templateUrl: 'app/sensor/sensor.html',
@@ -113,6 +167,10 @@ angular.module('siteCurApp')
   .component('removesensor', {
     templateUrl: 'app/sensor/remove_sensor.html',
     controller: ManageSensorComponent
+  })
+  .component('calibrasensor', {
+    templateUrl: 'app/sensor/calibra_sensor.html',
+    controller: CalibraSensorComponent
   });
 
 })();

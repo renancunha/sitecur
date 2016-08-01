@@ -22,6 +22,11 @@ angular.module('siteCurApp')
         url: '/sensor_remove/{id}',
         template: '<removesensor></removesensor>',
         authenticate: 'admin'
+      })
+      .state('sensor_calibra', {
+        url: '/sensor_calibra',
+        template: '<calibrasensor></calibrasensor>',
+        authenticate: 'admin'
       });
 
   });

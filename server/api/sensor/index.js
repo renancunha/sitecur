@@ -12,4 +12,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
+router.post('/inicia_calibracao', controller.iniciaCalibracao);
+router.post('/envia_calibracao', controller.enviaCalibracao);
+
 module.exports = router;

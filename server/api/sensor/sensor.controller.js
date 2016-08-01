@@ -74,6 +74,24 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
+export function iniciaCalibracao(req, res) {
+  var socketio = req.app.get('socketio');
+  socketio.emit('inicia_calibracao');
+
+  console.log('broadcasting inicia_calibracao')
+
+  return res.status(200).end();
+}
+
+export function enviaCalibracao(req, res) {
+  var socketio = req.app.get('socketio');
+  socketio.emit('calibra', req.body.peso);
+
+  console.log('broadcasting calibra')
+
+  return res.status(200).end();
+}
+
 // Creates a new Sensor in the DB
 export function create(req, res) {
   return Sensor.create(req.body)

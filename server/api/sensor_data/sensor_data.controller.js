@@ -66,7 +66,7 @@ export function receive(req, res) {
 
   if(date) {
     console.log(date);
-    date = moment(date, 'DD/MM/YY HH:mm:ss').toDate();
+    date = moment(date, 'DD/MM/YYYY HH:mm:ss').toDate();
     console.log(date);
     console.log('Pegou data do arduino');
   }
@@ -107,7 +107,11 @@ export function getSensorData(req, res) {
   SensorData.find({
       'sensor': req.query.id,
       'date': { '$gte': req.query.date_start, '$lte': req.query.date_end}
-  }).exec()
+  })
+    .sort({
+      'date': -1
+    })
+    .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
