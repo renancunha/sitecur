@@ -25,3 +25,7 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.title:hover {
+  text-decoration: none;
+}

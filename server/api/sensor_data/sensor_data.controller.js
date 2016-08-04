@@ -104,6 +104,7 @@ export function receive(req, res) {
 
 // Gets a list of SensorDatas with filters
 export function getSensorData(req, res) {
+
   SensorData.find({
       'sensor': req.query.id,
       'date': { '$gte': req.query.date_start, '$lte': req.query.date_end}
@@ -111,6 +112,20 @@ export function getSensorData(req, res) {
     .sort({
       'date': -1
     })
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+export function getLastRead(req, res) {
+
+  SensorData.find({
+      'sensor': req.params.sensorId
+  })
+    .sort({
+      'date': -1
+    })
+    .limit(1)
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));

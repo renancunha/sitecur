@@ -4,33 +4,38 @@
 
 class MainController {
 
-  constructor($http, $scope, socket) {
+  constructor($http, $scope) {
     this.$http = $http;
-    this.socket = socket;
-    this.awesomeThings = [];
+    this.sensors = [];
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
-    });
   }
 
   $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      this.socket.syncUpdates('thing', this.awesomeThings);
+    this.$http.get('/api/sensors').then(response => {
+
+      this.sensors = response.data;
+
+      for(var index in this.sensors) {
+        this.loadSensorData(index);
+      }
+
     });
   }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
-    }
+  loadSensorData(_i) {
+    this.$http.get('/api/sensor_data/get_last_read/' + this.sensors[_i]._id)
+    .then(res => {
+
+      this.sensors[_i].last_read_value = 'N/A';
+      this.sensors[_i].last_read_date = 'N/A';
+
+      if(res.data.length > 0) {
+        this.sensors[_i].last_read_value = res.data[0].value;
+        this.sensors[_i].last_read_date = res.data[0].date;
+      }
+    });
   }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
 }
 
 angular.module('siteCurApp')
