@@ -4,10 +4,10 @@
 
 class MainController {
 
-  constructor($http, $scope) {
+  constructor($http, $scope, socket) {
     this.$http = $http;
     this.sensors = [];
-
+    this.socket = socket.socket;
   }
 
   $onInit() {
@@ -15,7 +15,13 @@ class MainController {
 
       this.sensors = response.data;
 
+
+
       for(var index in this.sensors) {
+        this.socket.on('data_arrived:' + this.sensors[index]._id, data => {
+          console.log(data);
+        });
+
         this.loadSensorData(index);
       }
 
