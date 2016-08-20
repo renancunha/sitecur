@@ -25,6 +25,7 @@
       <!-- injector:css -->
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/atuadores/atuadores.css">
       <link rel="stylesheet" href="app/custom.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/sensor/sensor.css">
@@ -81,6 +82,8 @@
       ga('send', 'pageview');
     </script>
 
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -113,8 +116,10 @@
       <script src="components/sensor/sensor.module.js"></script>
       <script src="components/user/user.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="components/auth/user.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
       <script src="app/admin/admin.router.js"></script>
+      <script src="app/atuadores/atuadores.controller.js"></script>
+      <script src="app/atuadores/atuadores.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
       <script src="app/sensor/sensor.controller.js"></script>
@@ -126,8 +131,8 @@
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
-      <script src="components/auth/router.decorator.js"></script>
       <script src="app/account/login/login.controller.js"></script>
+      <script src="components/auth/user.service.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/mainview/mainview.controller.js"></script>
       <script src="components/mainview/mainview.directive.js"></script>

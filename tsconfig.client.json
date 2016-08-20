@@ -17,6 +17,8 @@
         "client/app/admin/admin.module.ts",
         "client/app/admin/admin.router.ts",
         "client/app/app.ts",
+        "client/app/atuadores/atuadores.controller.ts",
+        "client/app/atuadores/atuadores.ts",
         "client/app/main/main.controller.ts",
         "client/app/main/main.ts",
         "client/app/sensor/sensor.controller.ts",

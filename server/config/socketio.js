@@ -10,11 +10,32 @@ function onDisconnect(socket) {
 }
 
 // When the user connects.. perform this
-function onConnect(socket) {
+function onConnect(socket, socketio) {
   // When the client emits 'info', this listens and executes
-  socket.on('info', data => {
-    socket.log(JSON.stringify(data, null, 2));
-    socket.emit('test', 5);
+
+  socket.on('on_change_lampada', data => {
+    console.log(data);
+    socketio.emit('on_change_lampada', data);
+  });
+
+  socket.on('lampada_state', data => {
+    socketio.emit('lampada_state', data);
+  });
+
+  socket.on('on_change_irrigacao', data => {
+    socketio.emit('on_change_irrigacao', data);
+  });
+
+  socket.on('irrigacao_state', data => {
+    socketio.emit('irrigacao_state', data);
+  });
+
+  socket.on('on_change_ventilacao', data => {
+    socketio.emit('on_change_ventilacao', data);
+  });
+
+  socket.on('ventilacao_state', data => {
+    socketio.emit('ventilacao_state', data);
   });
 
   // Insert sockets below
@@ -58,7 +79,7 @@ export default function(socketio) {
     });
 
     // Call onConnect.
-    onConnect(socket);
+    onConnect(socket, socketio);
     socket.log('CONNECTED');
   });
 }
