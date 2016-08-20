@@ -23,7 +23,7 @@ Sensor.find({}).remove()
     }, {
       name: 'Temp. Ambiente',
       alias: 'TempAmb_vaso_1',
-      unit: 'U'
+      unit: 'ºC'
     }, {
       name: 'Umidade Ambiente',
       alias: 'UmiAmb_vaso_1',
