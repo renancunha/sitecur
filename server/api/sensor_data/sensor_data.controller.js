@@ -64,6 +64,8 @@ function handleError(res, statusCode) {
 export function receive(req, res) {
   var date = req.query.data;
 
+  var socketio = req.app.get('socketio');
+
   if(date) {
     console.log(date);
     date = moment(date, 'DD/MM/YYYY HH:mm:ss').toDate();
@@ -89,6 +91,7 @@ export function receive(req, res) {
           sensorData.save()
             .then(s => {
               console.log('Sensor data saved: ' + sensor.name);
+              socketio.sockets.emit('data_arrived:' + sensor._id, sensorData);
               return s;
             });
         }
