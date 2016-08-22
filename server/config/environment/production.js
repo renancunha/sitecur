@@ -22,5 +22,5 @@ module.exports = {
           'mongodb://localhost/sitecur'
   },
 
-  seedDB: true
+  seedDB: false
 };
