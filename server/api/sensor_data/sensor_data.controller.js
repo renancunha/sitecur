@@ -106,14 +106,14 @@ export function receive(req, res) {
               sensorData.save()
                 .then(s => {
                   console.log('Sensor data saved: ' + sensor.name);
-                  socketio.sockets.emit('data_arrived:' + sensor._id, sensorData);
+                  socketio.sockets.emit('data_arrived', sensorData);
                   return s;
                 });
             }
             else
             {
               console.log('Nao deu 10 minutos, faz o broadcast do dado...' + sensor._id);
-              socketio.sockets.emit('data_arrived:' + sensor._id, sData);
+              socketio.sockets.emit('data_arrived', sData);
             }
           });
           
