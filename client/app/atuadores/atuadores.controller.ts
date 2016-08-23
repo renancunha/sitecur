@@ -18,17 +18,17 @@ class AtuadoresController {
   $onInit() {
     this.socket.on('lampada_state', function (data) {
       console.log(data);
-      this.lampada = data;
+      this.lampada = data == 0 ? false : true;
     });
 
     this.socket.on('irrigacao_state', function (data) {
       console.log(data);
-      this.irrigacao = data;
+      this.irrigacao = data == 0 ? false : true;
     });
 
     this.socket.on('ventilacao_state', function (data) {
       console.log(data);
-      this.ventilacao = data;
+      this.ventilacao = data == 0 ? false : true;
     });
 
   }
