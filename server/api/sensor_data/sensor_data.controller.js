@@ -83,17 +83,40 @@ export function receive(req, res) {
     Sensor.findOne({ alias: q }).exec()
       .then(sensor => {
         if(sensor) {
-          var sensorData = new SensorData();
-          sensorData.date = date;
-          sensorData.value = query[q];
-          sensorData.sensor = sensor._id;
+          
+          SensorData.find({
+              'sensor': sensor._id
+          })
+          .sort({
+            'date': -1
+          })
+          .limit(1)
+          .exec()
+          .then(sData => {
+            var sDate = moment(sData.date),
+                nowDate = moment();
 
-          sensorData.save()
-            .then(s => {
-              console.log('Sensor data saved: ' + sensor.name);
-              socketio.sockets.emit('data_arrived:' + sensor._id, sensorData);
-              return s;
-            });
+            if(nowDate.diff(sDate, 'minutes') >= 10) {
+              console.log('Ja se passaram 10 minutos, insere no banco de dados...');
+              var sensorData = new SensorData();
+              sensorData.date = date;
+              sensorData.value = query[q];
+              sensorData.sensor = sensor._id;
+
+              sensorData.save()
+                .then(s => {
+                  console.log('Sensor data saved: ' + sensor.name);
+                  socketio.sockets.emit('data_arrived:' + sensor._id, sensorData);
+                  return s;
+                });
+            }
+            else
+            {
+              console.log('Nao deu 10 minutos, faz o broadcast do dado...');
+              socketio.sockets.emit('data_arrived:' + sensor._id, sData);
+            }
+          });
+          
         }
         return sensor;
       })
