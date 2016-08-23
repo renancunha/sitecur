@@ -112,7 +112,7 @@ export function receive(req, res) {
             }
             else
             {
-              console.log('Nao deu 10 minutos, faz o broadcast do dado...');
+              console.log('Nao deu 10 minutos, faz o broadcast do dado...' + sensor._id);
               socketio.sockets.emit('data_arrived:' + sensor._id, sData);
             }
           });
