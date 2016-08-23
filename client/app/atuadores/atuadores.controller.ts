@@ -11,10 +11,11 @@ class AtuadoresController {
     this.lampada = false;
     this.irrigacao = false;
     this.ventilacao = false;
+
+    this.socket.emit('broadcast_atuadores_states', {});
   }
 
   $onInit() {
-    console.log(this.socket);
     this.socket.on('lampada_state', function (data) {
       console.log(data);
       this.lampada = data;

@@ -13,6 +13,11 @@ function onDisconnect(socket) {
 function onConnect(socket, socketio) {
   // When the client emits 'info', this listens and executes
 
+  socket.on('broadcast_atuadores_states', data => {
+    console.log('Sending request to broadcast atuadores...');
+    socketio.emit('broadcast_atuadores_states', data);
+  });
+
   socket.on('on_change_lampada', data => {
     console.log(data);
     socketio.emit('on_change_lampada', data);
