@@ -16,19 +16,20 @@ class AtuadoresController {
   }
 
   $onInit() {
+    var _this = this;
     this.socket.on('lampada_state', function (data) {
       console.log(data);
-      this.lampada = data == 0 ? false : true;
+      _this.lampada = data == 0 ? false : true;
     });
 
     this.socket.on('irrigacao_state', function (data) {
       console.log(data);
-      this.irrigacao = data == 0 ? false : true;
+      _this.irrigacao = data == 0 ? false : true;
     });
 
     this.socket.on('ventilacao_state', function (data) {
       console.log(data);
-      this.ventilacao = data == 0 ? false : true;
+      _this.ventilacao = data == 0 ? false : true;
     });
 
   }
@@ -36,7 +37,6 @@ class AtuadoresController {
   onLampadaChange(state) {
     this.lampada = state;
     this.socket.emit('on_change_lampada', this.lampada);
-    console.log('mitted', this.lampada);
   }
 
   onIrrigacaoChange(state) {
