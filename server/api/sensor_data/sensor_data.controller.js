@@ -95,7 +95,7 @@ export function receive(req, res) {
           .then(sDatas => {
             var nowDate = moment();
 
-            if(sDatas.length == 0 || (nowDate.diff(moment(sDatas[0].date), 'minutes') >= 10) {
+            if(sDatas.length == 0 || (nowDate.diff(moment(sDatas[0].date), 'minutes')) >= 10) {
               console.log('Ja se passaram 10 minutos, insere no banco de dados...');
               var sensorData = new SensorData();
               sensorData.date = date;
