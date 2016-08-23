@@ -92,11 +92,10 @@ export function receive(req, res) {
           })
           .limit(1)
           .exec()
-          .then(sData => {
-            var sDate = moment(sData.date),
-                nowDate = moment();
+          .then(sDatas => {
+            var nowDate = moment();
 
-            if(nowDate.diff(sDate, 'minutes') >= 10) {
+            if(sDatas.length == 0 || (nowDate.diff(moment(sDatas[0].date), 'minutes') >= 10) {
               console.log('Ja se passaram 10 minutos, insere no banco de dados...');
               var sensorData = new SensorData();
               sensorData.date = date;
@@ -113,7 +112,7 @@ export function receive(req, res) {
             else
             {
               console.log('Nao deu 10 minutos, faz o broadcast do dado...' + sensor._id);
-              socketio.sockets.emit('data_arrived', sData);
+              socketio.sockets.emit('data_arrived', query[q]);
             }
           });
           

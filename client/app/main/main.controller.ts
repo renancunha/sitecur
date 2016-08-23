@@ -20,7 +20,6 @@ class MainController {
       }
 
       this.socket.on('data_arrived', data => {
-        console.log(data);
         for (var i = 0; i < this.sensors.length; i++) {
           if(this.sensors[i]._id == data.sensor) {
             this.sensors[i].last_read_value = data.value;
