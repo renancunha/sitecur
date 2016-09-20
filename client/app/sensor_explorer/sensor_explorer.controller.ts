@@ -75,6 +75,8 @@
             
             if((i == (this.sensor_data.length - 1)) || i == 0)
               this.labels.push(this.$filter('date')(this.sensor_data[i].date, 'dd/MM/yyyy HH:mm'));
+            else
+              this.labels.push(' ');
         }
 
         this.data.push(_data);
