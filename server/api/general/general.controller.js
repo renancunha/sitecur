@@ -1,16 +1,6 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /api/sensors              ->  index
- * POST    /api/sensors              ->  create
- * GET     /api/sensors/:id          ->  show
- * PUT     /api/sensors/:id          ->  update
- * DELETE  /api/sensors/:id          ->  destroy
- */
-
 'use strict';
 
 import _ from 'lodash';
-import Sensor from './sensor.model';
 import General from './general.model';
 
 function respondWithResult(res, statusCode) {
@@ -60,7 +50,6 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Sensors
 export function getRaspIp(req, res) {
   return General.find().exec()
     .then(respondWithResult(res))
