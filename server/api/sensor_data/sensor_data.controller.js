@@ -13,6 +13,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import SensorData from './sensor_data.model';
 import Sensor from '../sensor/sensor.model';
+import General from '../general/general.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -66,7 +67,12 @@ export function receive(req, res) {
   var ip = req.headers['x-forwarded-for'] ||
   req.connection.remoteAddress;
 
-  console.log("IP do usuario é: " + ip);
+  if(ip) {
+    var general = new General();
+    general.lastRaspIp = ip;
+    general.save();
+    console.log("IP raspberry: " + ip);
+  }
 
   var date = req.query.data;
 
