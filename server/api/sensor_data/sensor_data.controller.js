@@ -120,7 +120,6 @@ export function receive(req, res) {
             sensorData.value = query[q];
             sensorData.sensor = sensor._id;
 
-            console.log((nowDate.diff(moment(sDatas[0].date), 'minutes')));
             if(sDatas.length == 0 || (nowDate.diff(moment(sDatas[0].date), 'minutes') >= 10)) {
               console.log('Ja se passaram 10 minutos, insere no banco de dados...');
               sensorData.save()
