@@ -68,9 +68,18 @@ export function receive(req, res) {
   req.connection.remoteAddress;
 
   if(ip) {
-    var general = new General();
-    general.lastRaspIp = ip;
-    general.save();
+    General.find().exec()
+      .then(gens => {
+        var general = null;
+        if(gens.length > 0) {
+          general = gens[0];
+        }
+        else {
+          general = new General();
+        }
+        general.lastRaspIp = ip;
+        general.save();
+      });
     console.log("IP raspberry: " + ip);
   }
 
