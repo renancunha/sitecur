@@ -14,6 +14,7 @@ export default function(app) {
   app.use('/api/sensors', require('./api/sensor'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/generals', require('./api/general'));
 
   app.use('/auth', require('./auth').default);
 
