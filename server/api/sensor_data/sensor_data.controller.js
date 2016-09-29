@@ -62,6 +62,12 @@ function handleError(res, statusCode) {
 }
 
 export function receive(req, res) {
+
+  var ip = req.headers['x-forwarded-for'] ||
+  req.connection.remoteAddress;
+
+  console.log("IP do usuario é: " + ip);
+
   var date = req.query.data;
 
   var socketio = req.app.get('socketio');
