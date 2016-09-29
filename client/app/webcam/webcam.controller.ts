@@ -12,6 +12,7 @@ class WebcamController {
 
   $onInit() {
       this.$http.get('/api/generals/raspip').then(response => {
+      	console.log(response.data);
         this.generals = response.data;
         if(this.generals && this.generals.length > 0) {
         	this.raspIp = this.generals[0].lastRaspIp;

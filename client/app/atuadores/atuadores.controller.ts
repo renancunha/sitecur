@@ -12,6 +12,9 @@ class AtuadoresController {
     this.irrigacao = false;
     this.ventilacao = false;
 
+    this.generals = {};
+    this.raspIp = 0;
+
     this.socket.emit('broadcast_atuadores_states', {});
   }
 
@@ -28,7 +31,13 @@ class AtuadoresController {
     this.socket.on('ventilacao_state', function (data) {
       _this.ventilacao = data == 0 ? false : true;
     });
-
+    this.$http.get('/api/generals/raspip').then(response => {
+        console.log(response.data);
+        this.generals = response.data;
+        if(this.generals && this.generals.length > 0) {
+          this.raspIp = this.generals[0].lastRaspIp;
+        }
+      });
   }
 
   onLampadaChange(state) {
